@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MoneyManagerGavr.View
@@ -42,11 +41,7 @@ namespace MoneyManagerGavr.View
 
         private void Account_Image_Click(object sender, MouseButtonEventArgs e)
         {
-            string currentUserLogin = "логин_пользователя";
-
-            // Просто открываем новое окно
-            var accountWindow = new AccountPage(currentUserLogin);
-            ManagerFrame.Content = accountWindow;
+            ManagerFrame.Content = new AccountPage();
         }
 
         private void Settings_Image_Click(object sender, MouseButtonEventArgs e)

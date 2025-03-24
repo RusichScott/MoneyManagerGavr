@@ -116,7 +116,6 @@
     </Compile>
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="Sha256Hasher.cs" />
-    <Compile Include="User.cs" />
     <Compile Include="View\AccountPage.xaml.cs">
       <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
