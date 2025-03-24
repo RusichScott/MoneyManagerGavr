@@ -10,38 +10,17 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <TextBlock Text="MoneyManager"
-                   VerticalAlignment="Center"
-                   Margin="20px 0 0 0"
-                   Foreground="{StaticResource TextColor}"
-                   FontSize="36"
-                   FontWeight="Bold"/>
-        <StackPanel
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Grid.Row="1">
-            <TextBlock Text="Вход в систему"
-                       Foreground="{StaticResource TextColor}"
-                       FontSize="24px"
-                       HorizontalAlignment="Center"
-                       Margin="0 0 0 20px"/>
-            <TextBox Margin="10px"
-                       Width="200px"
-                       Height="40px"/>
-            <PasswordBox Margin="10px"
-                         Width="200px"
-                         Height="40px"/>
-            <Button Content="Войти"
-                    Margin="0 30px 0 0"
-                    Width="180px"
-                    Height="40px"
-                    Background="{StaticResource SecondaryColor}"
-                    Foreground="{StaticResource TextColor}"
-                    FontSize="18px"
-                    FontWeight="Bold" Click="Login_Button_Click"/>
-        </StackPanel>
+                VerticalAlignment="Center"
+                Margin="20px 0 0 0"
+                Foreground="{StaticResource TextColor}"
+                FontSize="36"
+                FontWeight="Bold" FontFamily="Magneto"/>
+        <Frame x:Name="LoginFrame"
+            Grid.Row="1"
+            NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

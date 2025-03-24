@@ -10,7 +10,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MoneyManagerGavr.View;
 
 namespace MoneyManagerGavr.View
 {
@@ -22,15 +24,31 @@ namespace MoneyManagerGavr.View
         public LoginWindow()
         {
             InitializeComponent();
+            LoginFrame.Content = new LoginPage(this);
         }
-
-        private void Login_Button_Click(object sender, RoutedEventArgs e)
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
-            //Логика входа в систему
-            ManagerWindow managerWindow = new ManagerWindow();
-            MessageBox.Show("Вы успешно вошли в систему!");
-            managerWindow.Show();
+            this.WindowState = WindowState.Minimized;
+        }
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
     }
 }

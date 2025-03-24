@@ -5,14 +5,86 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MoneyManagerGavr.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="HomePage">
 
     <Grid>
-        <TextBlock Text="Главная страница"
-                   FontSize="72px"
-                   Foreground="{StaticResource TextColor}"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ContentControl 
+            Grid.Row="0"
+            Grid.ColumnSpan="2"  
+            Style="{StaticResource FullWidthUnderlinedHeader}" 
+            Content="Домашняя страница"/>
+
+        <TextBlock Text="Основной счёт:"
+                       Grid.Row="1" Grid.Column="0"
+                       VerticalAlignment="Center" 
+                       Foreground="{StaticResource TextColor}"
+                       FontSize="52"/>
+
+        <TextBlock Text="0.0р" 
+                       Grid.Row="1" Grid.Column="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right" 
+                       Foreground="{StaticResource TextColor}"
+                       FontSize="52"/>
+
+        <TextBlock Text="Доходы"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+                   VerticalAlignment="Top"
+                   Grid.Row="2" Grid.Column="0"
+                   Foreground="{StaticResource TextColor}"
+                   FontSize="46"/>
+
+        <TextBlock Text="Расходы"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Grid.Row="2" Grid.Column="1"
+                   Foreground="{StaticResource TextColor}"
+                   FontSize="46"/>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Center">
+            <Button Content="Добавить доходы" 
+                    Width="240"
+                    Height="80"
+                    FontSize="24"
+                    Background="{StaticResource SecondaryColor}"
+                    Foreground="{StaticResource TextColor}"
+                    FontWeight="Bold"
+                    Cursor="Hand"/>
+            <Button Content="Создать счёт" 
+                    Width="240"
+                    Height="80"
+                    FontSize="24"
+                    Background="{StaticResource SecondaryColor}"
+                    Foreground="{StaticResource TextColor}"
+                    FontWeight="Bold"
+                    Margin="95 0 95 0"
+                    Cursor="Hand"/>
+            <Button Content="Добавить расходы" 
+                    Width="240"
+                    Height="80"
+                    FontSize="24"
+                    Background="{StaticResource SecondaryColor}"
+                    Foreground="{StaticResource TextColor}"
+                    FontWeight="Bold"
+                    Cursor="Hand"/>
+        </StackPanel>
+
+
     </Grid>
 </Page>

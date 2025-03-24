@@ -9,7 +9,7 @@
         WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.13*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Background="{StaticResource SecondaryColor}">
@@ -21,19 +21,29 @@
                        FontWeight="Bold"/>
             <Image Source="/images/home.png"
                    Width="100px"
-                   Margin="0 80px 0 0" MouseDown="Home_Image_Click"/>
+                   Margin="0 80px 0 0" MouseDown="Home_Image_Click"
+                   Cursor="Hand"
+                   Style="{StaticResource HoverImageStyle}"/>
             <Image Source="/images/income.png"
                    Width="100px"
-                   Margin="0 80px 0 0" MouseDown="Income_Image_Click"/>
+                   Margin="0 80px 0 0" MouseDown="Income_Image_Click"
+                   Cursor="Hand"
+                   Style="{StaticResource HoverImageStyle}"/>
             <Image Source="/images/spendings.png"
                    Width="100px"
-                   Margin="0 80px 0 0" MouseDown="Spendings_Image_Click"/>
+                   Margin="0 80px 0 0" MouseDown="Spendings_Image_Click"
+                   Cursor="Hand"
+                   Style="{StaticResource HoverImageStyle}"/>
             <Image Source="/images/account.png"
                    Width="100px"
-                   Margin="0 80px 0 0" MouseDown="Account_Image_Click"/>    
+                   Margin="0 80px 0 0" MouseDown="Account_Image_Click"
+                   Cursor="Hand"
+                   Style="{StaticResource HoverImageStyle}"/>    
             <Image Source="/images/settings.png"
                    Width="100px"
-                   Margin="0 80px 0 0" MouseDown="Settings_Image_Click"/>
+                   Margin="0 80px 0 0" MouseDown="Settings_Image_Click"
+                   Cursor="Hand"
+                   Style="{StaticResource HoverImageStyle}"/>
         </StackPanel>
         <Frame x:Name="ManagerFrame"
                Grid.Column="1"

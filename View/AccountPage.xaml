@@ -5,14 +5,64 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MoneyManagerGavr.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="AccountPage">
 
     <Grid>
-        <TextBlock Text="Аккаунт"
-           FontSize="72px"
-           Foreground="{StaticResource TextColor}"
-           HorizontalAlignment="Center"
-           VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <ContentControl 
+            Grid.ColumnSpan="2"
+            Style="{StaticResource FullWidthUnderlinedHeader}" 
+            Content="Аккаунт"/>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Информация об аккаунте:"
+                       Foreground="{StaticResource TextColor}"
+                       FontSize="64px"
+                       Margin="0 0 0 50px"/>
+            <TextBlock Text="Дмитрий"
+                       Name="NameText"
+                       Foreground="{StaticResource TextColor}"
+                       FontSize="48px"
+                       Margin="30 0 0 0"/>
+            <TextBlock Text="Гавриловский"
+                       Name="SurnameText"
+                       Foreground="{StaticResource TextColor}"
+                       FontSize="48px"
+                       Margin="30 0 0 0"/>
+            <TextBlock Text="ID: 777"
+                       Name="IdText"
+                       Foreground="{StaticResource TextColor}"
+                       FontSize="36px"
+                       Margin="30 0 0 0"/>
+            <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Center"
+                        Grid.Row="2">
+
+                <Button Content="Изменить данные аккаунта"
+                        Foreground="{StaticResource TextColor}"
+                        Background="{StaticResource SecondaryColor}"
+                        Width="500px"
+                        Height="80px"
+                        FontSize="36"
+                        Margin="800 0 0 0"
+                        Cursor="Hand"/>
+
+                <Button Content="Удалить аккаунт"
+                        Foreground="Black"
+                        Background="Red"
+                        Width="500px"
+                        Height="80px"
+                        FontSize="36"
+                        FontWeight="Bold"
+                        Margin="800 70 0 0"
+                        Cursor="Hand"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
