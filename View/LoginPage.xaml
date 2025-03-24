@@ -1,0 +1,48 @@
+﻿<Page x:Class="MoneyManagerGavr.View.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MoneyManagerGavr.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LoginPage">
+
+    <Grid>
+        <StackPanel
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+              Grid.Row="1">
+            <TextBlock Text="Вход в систему"
+                   Foreground="{StaticResource TextColor}"
+                   FontSize="24px"
+                   HorizontalAlignment="Center"
+                   Margin="0 0 0 20px" FontFamily="Rockwell Extra Bold"/>
+            <TextBox x:Name="usernameTextBox"
+                   Margin="10px"
+                   Width="200px"
+                   Height="40px"/>
+            <PasswordBox x:Name="passwordBox"
+                  Margin="10px"
+                  Width="200px"
+                  Height="40px"/>
+            <Button Content="Войти"
+                  Margin="0 30px 0 0"
+                  Width="200px"
+                  Height="50px"
+                  Background="{StaticResource SecondaryColor}"
+                  Foreground="{StaticResource ElementsColor}"
+                  FontSize="18px"
+                  FontWeight="Bold" Click="Login_Button_Click"
+                  FontFamily="Rockwell Extra Bold"/>
+            <Label Content="Зарегистрироваться"
+                Foreground="{StaticResource TextColor}"
+                FontSize="15px"
+                HorizontalAlignment="Center"
+                Margin="0 10px 0 0"
+                Cursor="Hand" MouseDown="Regestration_Click" 
+                FontFamily="Rockwell Extra Bold"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

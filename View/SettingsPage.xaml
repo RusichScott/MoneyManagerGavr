@@ -5,14 +5,39 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MoneyManagerGavr.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="SettingsPage">
 
-    <Grid>
-        <TextBlock Text="Настройки"
-           FontSize="72px"
-           Foreground="{StaticResource TextColor}"
-           HorizontalAlignment="Center"
-           VerticalAlignment="Center"/>
+    <Grid x:Name="MainGrid" Background="{DynamicResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ContentControl 
+        Style="{StaticResource FullWidthUnderlinedHeader}" 
+        Content="Настройки"/>
+
+        <StackPanel Grid.Row="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            
+            <Button x:Name="ThemeToggleButton"
+                Content="Включить тёмную тему"
+                Background="{DynamicResource SecondaryColor}"
+                Foreground="{DynamicResource TextColor}"
+                Width="500"
+                Height="80"
+                FontSize="42"
+                Click="ThemeToggleButton_Click"/>
+
+            <Button Content="Выйти из приложения"
+                Background="{StaticResource SecondaryColor}"
+                Foreground="{StaticResource TextColor}"
+                Width="500"
+                Height="80"
+                FontSize="42"
+                Margin="0 200 0 0"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -5,14 +5,75 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MoneyManagerGavr.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="SpendingsPage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ContentControl 
+            Style="{StaticResource FullWidthUnderlinedHeader}" 
+            Content="Расходы"
+            Grid.Row="0" Grid.ColumnSpan="2"/>
+
         <TextBlock Text="Расходы"
-           FontSize="72px"
-           Foreground="{StaticResource TextColor}"
-           HorizontalAlignment="Center"
-           VerticalAlignment="Center"/>
+                   Grid.Row="1"
+                   FontSize="52"
+                   Foreground="{StaticResource TextColor}"
+                   VerticalAlignment="Center"/>
+        <TextBlock Text="0.0р"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   FontSize="52"
+                   Foreground="{StaticResource TextColor}"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"/>
+
+        <TextBlock Text="Расходы"
+                   Grid.Row="2"
+                   FontSize="46"
+                   Foreground="{StaticResource TextColor}"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"/>
+
+        <StackPanel Orientation="Vertical"
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalAlignment="Center" Height="430" VerticalAlignment="Center">
+            <Button Content="Выбрать период" 
+                Width="260"
+                Height="80"
+                FontSize="24"
+                Background="{StaticResource SecondaryColor}"
+                Foreground="{StaticResource TextColor}"
+                FontWeight="Bold"
+                    Cursor="Hand"/>
+            <Button Content="Добавить расходы" 
+                Width="260"
+                Height="80"
+                FontSize="24"
+                Background="{StaticResource SecondTextColor}"
+                Foreground="{StaticResource TextColor}"
+                FontWeight="Bold"
+                Margin="0 120 0 40"
+                    Cursor="Hand"/>
+            <Button Content="Добавить категорию" 
+                Width="260"
+                Height="80"
+                FontSize="24"
+                Background="{StaticResource SecondTextColor}"
+                Foreground="{StaticResource TextColor}"
+                FontWeight="Bold"
+                    Cursor="Hand"/>
+        </StackPanel>
     </Grid>
 </Page>
