@@ -13,49 +13,85 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Npgsql;
+using System.Windows;
+using System.Windows.Controls;
+using static MoneyManagerGavr.View.LoginPage;
+using MessageBox = System.Windows.MessageBox;
 
 namespace MoneyManagerGavr.View
 {
-    /// <summary>
-    /// Логика взаимодействия для AccountPage.xaml
-    /// </summary>
     public partial class AccountPage : Page
     {
-        public AccountPage(string username)
+        private readonly DatabaseHelper _dbHelper;
+
+        public AccountPage()
         {
             InitializeComponent();
-            LoadUserData(username);
+            _dbHelper = new DatabaseHelper("localhost", "postgres", "WraiDexYT1", "MoneyManager");
+            LoadAccountData();
         }
 
-        private void LoadUserData(string username)
+        private void LoadAccountData()
         {
-            string connectionString = "Host=localhost;Username=postgres;Password=WraiDexYT1;Database=MoneyManager";
+            if (!AppContext.IsLoggedIn) return;
 
-            using (var connection = new NpgsqlConnection(connectionString))
+            // Загрузка данных пользователя из БД
+            var userData = _dbHelper.GetUserData(AppContext.CurrentUser);
+            if (userData != null)
             {
-                connection.Open();
+                NameText.Text = userData.FirstName;
+                SurnameText.Text = userData.LastName;
+                IdText.Text = $"ID: {userData.Id}";
+            }
+        }
 
-                string sql = "SELECT first_name, last_name, id FROM registration WHERE username = @username";
+        private void EditAccount_Click(object sender, RoutedEventArgs e)
+        {
+            var editDialog = new EditAccountDialog(
+                NameText.Text,
+                SurnameText.Text);
 
-                using (var cmd = new NpgsqlCommand(sql, connection))
+            if (editDialog.ShowDialog() == true)
+            {
+                // Обновляем данные в БД
+                bool success = _dbHelper.UpdateUserAccount(
+                    AppContext.CurrentUser,
+                    editDialog.NewFirstName,
+                    editDialog.NewLastName);
+
+                if (success)
                 {
-                    cmd.Parameters.AddWithValue("@username", username);
+                    MessageBox.Show("Данные успешно обновлены!");
+                    LoadAccountData(); // Обновляем отображение
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка при обновлении данных");
+                }
+            }
+        }
 
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            NameText.Text = reader.GetString(0);      // Имя
-                            SurnameText.Text = reader.GetString(1);   // Фамилия
-                            IdText.Text = $"ID: {reader.GetInt32(2)}"; // ID
-                        }
-                        else
-                        {
-                            NameText.Text = "Пользователь";
-                            SurnameText.Text = "не найден";
-                            IdText.Text = "ID: 0";
-                        }
-                    }
+        private void DeleteAccount_Click(object sender, RoutedEventArgs e)
+        {
+            var confirmResult = MessageBox.Show(
+                "Вы точно хотите удалить аккаунт? Это действие нельзя отменить!",
+                "Подтверждение удаления",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (confirmResult == MessageBoxResult.Yes)
+            {
+                bool success = _dbHelper.DeleteUserAccount(AppContext.CurrentUser);
+
+                if (success)
+                {
+                    MessageBox.Show("Аккаунт успешно удалён");
+                    AppContext.Logout();
+                    NavigationService?.Navigate(new LoginPage(new LoginWindow()));
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка при удалении аккаунта");
                 }
             }
         }

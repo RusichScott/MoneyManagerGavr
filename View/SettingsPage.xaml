@@ -37,7 +37,8 @@
                 Width="500"
                 Height="80"
                 FontSize="42"
-                Margin="0 200 0 0"/>
+                Margin="0 200 0 0"
+                Click="ExitButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

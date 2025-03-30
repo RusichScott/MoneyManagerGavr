@@ -27,12 +27,6 @@ namespace MoneyManagerGavr.View
             InitializeComponent();
             this.loginWindow = loginWindow;
         }
-
-        public static class AppContext
-        {
-            public static string CurrentUser { get; set; }
-        }
-
         private void Regestration_Click(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new RegistrationPage());
@@ -47,13 +41,12 @@ namespace MoneyManagerGavr.View
 
             if (dbHelper.ValidateCredentials(username, password))
             {
-                // Сохраняем логин в статическом классе
-                AppContext.CurrentUser = username;  // Теперь будет работать
+                // Сохраняем пользователя в контекст
+                AppContext.Login(username);
 
                 MessageBox.Show("Вход выполнен успешно!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 ManagerWindow managerWindow = new ManagerWindow();
-                MessageBox.Show("Вы успешно вошли в систему");
                 managerWindow.Show();
                 loginWindow.Close();
             }

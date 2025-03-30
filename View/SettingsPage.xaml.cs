@@ -25,6 +25,11 @@ namespace MoneyManagerGavr.View
             InitializeComponent();
         }
 
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         private void ThemeToggleButton_Click(object sender, RoutedEventArgs e)
         {
             var newTheme = new Uri("Themes/DarkTheme.xaml", UriKind.Relative);

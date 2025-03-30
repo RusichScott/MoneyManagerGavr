@@ -15,53 +15,52 @@
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
 
-        <ContentControl 
-            Grid.ColumnSpan="2"
-            Style="{StaticResource FullWidthUnderlinedHeader}" 
-            Content="Аккаунт"/>
+        <ContentControl Grid.ColumnSpan="2"
+                        Style="{StaticResource FullWidthUnderlinedHeader}"
+                        Content="Аккаунт"/>
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Margin="20">
             <TextBlock Text="Информация об аккаунте:"
                        Foreground="{StaticResource TextColor}"
-                       FontSize="64px"
-                       Margin="0 0 0 50px"/>
-            <TextBlock Text="Дмитрий"
-                       Name="NameText"
-                       Foreground="{StaticResource TextColor}"
-                       FontSize="48px"
-                       Margin="30 0 0 0"/>
-            <TextBlock Text="Гавриловский"
-                       Name="SurnameText"
-                       Foreground="{StaticResource TextColor}"
-                       FontSize="48px"
-                       Margin="30 0 0 0"/>
-            <TextBlock Text="ID: 777"
-                       Name="IdText"
-                       Foreground="{StaticResource TextColor}"
-                       FontSize="36px"
-                       Margin="30 0 0 0"/>
-            <StackPanel Orientation="Vertical"
-                        VerticalAlignment="Center"
-                        Grid.Row="2">
+                       FontSize="24"
+                       Margin="0 0 0 20"/>
 
+            <TextBlock x:Name="NameText"
+                       Foreground="{StaticResource TextColor}"
+                       FontSize="18"
+                       Margin="0 0 0 10"/>
+
+            <TextBlock x:Name="SurnameText"
+                       Foreground="{StaticResource TextColor}"
+                       FontSize="18"
+                       Margin="0 0 0 10"/>
+
+            <TextBlock x:Name="IdText"
+                       Text="ID: "
+                       Foreground="{StaticResource TextColor}"
+                       FontSize="18"
+                       Margin="0 0 0 30"/>
+
+            <StackPanel Grid.Row="2" Orientation="Vertical">
                 <Button Content="Изменить данные аккаунта"
                         Foreground="{StaticResource TextColor}"
                         Background="{StaticResource SecondaryColor}"
-                        Width="500px"
-                        Height="80px"
-                        FontSize="36"
-                        Margin="800 0 0 0"
-                        Cursor="Hand"/>
+                        Width="300"
+                        Height="50"
+                        FontSize="18"
+                        Margin="0 0 0 20"
+                        Cursor="Hand"
+                        Click="EditAccount_Click"/>
 
                 <Button Content="Удалить аккаунт"
                         Foreground="Black"
                         Background="Red"
-                        Width="500px"
-                        Height="80px"
-                        FontSize="36"
+                        Width="300"
+                        Height="50"
+                        FontSize="18"
                         FontWeight="Bold"
-                        Margin="800 70 0 0"
-                        Cursor="Hand"/>
+                        Cursor="Hand"
+                        Click="DeleteAccount_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
