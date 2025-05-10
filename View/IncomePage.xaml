@@ -5,14 +5,51 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MoneyManagerGavr.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="IncomePage">
 
     <Grid>
-        <TextBlock Text="Доходы"
-           FontSize="72px"
-           Foreground="{StaticResource TextColor}"
-           HorizontalAlignment="Center"
-           VerticalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.9*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ContentControl 
+            Style="{StaticResource FullWidthUnderlinedHeader}" 
+            Content="Доходы"
+            Grid.Row="0" Grid.ColumnSpan="2"/>
+
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center" Height="430" VerticalAlignment="Center">
+            <Button Content="Выбрать период" 
+                    Width="240"
+                    Height="80"
+                    FontSize="24"
+                    Background="{StaticResource SecondaryColor}"
+                    Foreground="{StaticResource TextColor}"
+                    FontWeight="Bold"/>
+            <Button Content="Создать счёт" 
+                    Width="240"
+                    Height="80"
+                    FontSize="24"
+                    Background="{StaticResource SecondTextColor}"
+                    Foreground="{StaticResource TextColor}"
+                    FontWeight="Bold"
+                    Margin="0 120 0 40"/>
+            <Button Content="Добавить расходы" 
+                    Width="240"
+                    Height="80"
+                    FontSize="24"
+                    Background="{StaticResource SecondTextColor}"
+                    Foreground="{StaticResource TextColor}"
+                    FontWeight="Bold"/>
+        </StackPanel>
     </Grid>
 </Page>

@@ -24,5 +24,36 @@ namespace MoneyManagerGavr.View
         {
             InitializeComponent();
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ThemeToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var newTheme = new Uri("Themes/DarkTheme.xaml", UriKind.Relative);
+
+            // Если уже тёмная тема - переключаем на светлую
+            if (Application.Current.Resources.MergedDictionaries.Any(d =>
+                d.Source != null && d.Source.OriginalString.Contains("DarkTheme")))
+            {
+                newTheme = new Uri("Themes/LightTheme.xaml", UriKind.Relative);
+                ThemeToggleButton.Content = "Включить тёмную тему";
+            }
+            else
+            {
+                ThemeToggleButton.Content = "Включить светлую тему";
+            }
+
+            // Применяем новую тему
+            Application.Current.Resources.MergedDictionaries.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(
+                new ResourceDictionary() { Source = newTheme });
+
+            // Сохраняем настройки
+            Properties.Settings.Default.DarkTheme = newTheme.OriginalString.Contains("Dark");
+            Properties.Settings.Default.Save();
+        }
     }
 }

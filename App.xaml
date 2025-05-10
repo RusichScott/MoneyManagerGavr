@@ -8,6 +8,101 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Colors.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="HoverImageStyle" TargetType="Image">
+                <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Opacity" Value="0.8"/>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="0.8"
+                                                 Duration="0:0:0.2"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                 To="1.1"
+                                                 Duration="0:0:0.2"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                 To="1.1"
+                                                 Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                 To="1"
+                                                 Duration="0:0:0.2"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                                 To="1"
+                                                 Duration="0:0:0.2"/>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                                 To="1"
+                                                 Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="FullWidthUnderlinedHeader" TargetType="ContentControl">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ContentControl">
+                            <Grid VerticalAlignment="Top">
+                                <Border Background="{StaticResource SecondTextColor}"
+                                    CornerRadius="0,0,30,30"
+                                    Height="120"  
+                                    VerticalAlignment="Top"/>
+
+                                    
+                                <TextBlock Text="{TemplateBinding Content}"
+                                   FontSize="72"
+                                   Foreground="{StaticResource TextColor}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Bottom"
+                                   Margin="0,0,0,20"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+                <Setter Property="FontSize" Value="72"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="Margin" Value="0,0,0,0"/>
+            </Style>
+
+            <!-- Светлая тема -->
+            <ResourceDictionary x:Key="LightTheme">
+                <SolidColorBrush x:Key="BackgroundColor" Color="#FFFFFF"/>
+                <SolidColorBrush x:Key="PrimaryColor" Color="#588157"/>
+                <SolidColorBrush x:Key="SecondaryColor" Color="#3a5a40"/>
+                <SolidColorBrush x:Key="TextColor" Color="#000000"/>
+            </ResourceDictionary>
+
+            <!-- Тёмная тема -->
+            <ResourceDictionary x:Key="DarkTheme">
+                <SolidColorBrush x:Key="BackgroundColor" Color="#1A1A1A"/>
+                <SolidColorBrush x:Key="PrimaryColor" Color="#3a5a40"/>
+                <SolidColorBrush x:Key="SecondaryColor" Color="#344e41"/>
+                <SolidColorBrush x:Key="TextColor" Color="#FFFFFF"/>
+            </ResourceDictionary>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
